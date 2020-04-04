@@ -22,4 +22,10 @@ protected $dates = ['deleted_at'];
     public function category(){
         return $this->belongsTo('App\Category');
     }
+
+    // many to many relationship with tags
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }

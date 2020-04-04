@@ -90,8 +90,6 @@ class PostsController extends Controller
         $posts = Post::findOrFail($id);
          $categories = Category::all();
         return view('admin.posts.edit', compact('posts','categories'));
-
-
     }
 
     /**
@@ -103,7 +101,28 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'content' => 'required',
+            'category_id' => 'required'
+        ]);
+
+        // agar user image karna chahta hai tou change krskhta hai agr nhi krna chahta tou na karey dont worry
+           $posts = Post::findOrFail($id);
+        if($request->hasFile('featured')) {
+            $featured = $request->featured;
+            $featued_new_name = time(). $featured->getClientOriginalName();
+            $featured->move('uploads/posts/', $featued_new_name);
+
+            $posts->featured = 'uploads/posts/'.$featued_new_name;
+        }
+
+        $posts->title = $request->title;
+        $posts->content = $request->content;
+        $posts->category_id = $request->category_id;
+        $posts->save();
+        Session::flash('success','The Successfully updated');
+        return redirect('admin/post');
     }
 
     /**
