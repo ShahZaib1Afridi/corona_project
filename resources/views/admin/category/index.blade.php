@@ -18,6 +18,8 @@
                       </tr>
                     </thead>
                     <tbody>
+                        @if ($categories->count() > 0)
+
                         @foreach ($categories as $category)
                             <tr>
                               <td>{{ $category->name }}</td>
@@ -34,6 +36,12 @@
                               </td>
                             </tr>
                         @endforeach
+
+                        @else
+                            <tr>
+                                <th colspan="3" class="text-center">NO Category Yet</th>
+                            </tr>
+                        @endif
 
                     </tbody>
                   </table>

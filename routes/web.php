@@ -30,6 +30,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'as'   => 'post.restore'
     ]);
 
-// route create for posts
+// route end for posts
+
+// route for TagController
+Route::resource('/tags', 'TagController');
 
 });

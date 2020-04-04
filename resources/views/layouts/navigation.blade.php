@@ -42,6 +42,14 @@
                       </ul>
                 </li>
 
+                <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Tag <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ asset('admin/tags/create') }}">Create New Tag</a></li>
+                        <li><a href="{{ asset('admin/tags') }}">All Tag</a></li>
+                      </ul>
+                </li>
+
               </ul>
 
               <ul class="nav navbar-nav navbar-right">
@@ -65,6 +73,7 @@
         <script src="{{ asset('js/toaster.min.js') }}" ></script>
 
         <script type="text/javascript">
+
         @if (Session::has('success')) {
             toastr.success("{{ Session::get('success') }}")
         }
@@ -74,6 +83,12 @@
             toastr.info("{{ Session::get('info') }}")
         }
         @endif
+
+        @if (Session::has('warning')) {
+            toastr.warning("{{ Session::get('warning') }}")
+        }
+        @endif
+
         // Display an info toast with no title
 
         </script>
