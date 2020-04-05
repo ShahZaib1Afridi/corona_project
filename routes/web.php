@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/test', function() {
-    dd(App\Category::find(4)->posts());
+    return App\Profile::find(1)->user;
 });
 
 
@@ -39,5 +39,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 // route for TagController
 Route::resource('/tags', 'TagController');
+Route::resource('/users', 'UserController');
 
 });

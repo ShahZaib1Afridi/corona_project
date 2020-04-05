@@ -30,13 +30,40 @@
                     <label for="category_id">Select Category:</label>
 
                     <select class='form-control' name="category_id" id="category_id">
+                        
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            <option value="{{ $category->id }}"
+
+                               @if ($posts->category->id ==  $category->id)
+                                   selected
+
+                               @endif
+
+                                > {{ $category->name }}</option>
 
                         @endforeach
                     </select>
-
                   </div>
+
+                  <div class="form-group">
+                       <label for="">Select Tags</label><br>
+                      @foreach ($tags as $tag)
+                  <div class='checkbox-inline'>
+                    <label>
+                      <input type='checkbox' name="tags[]" value='{{ $tag->id }}'
+                        @foreach ($posts->tags as $t)
+                          @if ($tag->id == $t->id)
+                              checked
+                          @endif
+                        @endforeach
+
+                      >
+                      {{ $tag->tag }}
+                    </label>
+                  </div>
+                       @endforeach
+                  </div>
+
                   <div class="form-group">
                     <label for="content">Content:</label>
                     <textarea class="form-control" id="content" name="content">

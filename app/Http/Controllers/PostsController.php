@@ -94,7 +94,8 @@ class PostsController extends Controller
     {
         $posts = Post::findOrFail($id);
          $categories = Category::all();
-        return view('admin.posts.edit', compact('posts','categories'));
+         $tags = Tag::all();
+        return view('admin.posts.edit', compact('posts','categories','tags'));
     }
 
     /**
@@ -126,6 +127,9 @@ class PostsController extends Controller
         $posts->content = $request->content;
         $posts->category_id = $request->category_id;
         $posts->save();
+
+        $posts->tags()->sync($request->tags);
+        
         Session::flash('success','The Successfully updated');
         return redirect('admin/post');
     }

@@ -49,6 +49,13 @@
                         <li><a href="{{ asset('admin/tags') }}">All Tag</a></li>
                       </ul>
                 </li>
+                <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#"> Users <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+
+                        <li><a href="{{ asset('admin/users') }}">All Users</a></li>
+                      </ul>
+                </li>
 
               </ul>
 
