@@ -1,5 +1,10 @@
 <?php
 
+Route::get('/test', function() {
+    dd(App\Category::find(4)->posts());
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
