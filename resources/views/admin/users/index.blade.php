@@ -12,8 +12,8 @@
                   <table class='table table-striped table-bordered table-hover'>
                     <thead>
                       <tr>
-                        <th>Name</th>
                         <th>Image</th>
+                        <th>Name</th>
                         <th>Permission</th>
                         <th>Delete</th>
                       </tr>
@@ -24,8 +24,8 @@
 
                         @foreach ($users as $user)
                             <tr>
-                              <td><img src="{{ asset('$user->profile->avatar')}}" class="img-rounded"  alt="{{ $user->title }}" width="70px" height="50px;"></td>
-                              <td>{{ $user->title }}</td>
+                              <td><img src="{{ asset ('uploads/avatar/1.png')}}" class="img-rounded"  alt="{{ $user->title }}" width="90px" height="50px;"></td>
+                              <td>{{ $user->name }}</td>
 
                               <td>
                                   Permission
